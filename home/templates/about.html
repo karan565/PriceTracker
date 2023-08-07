@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Price Tracker{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h1 class="text-center"><u><b>About Us</b></u></h1><br>
+            <p>Welcome to PriceTracker, your go-to platform for effortless Amazon product price tracking. Our innovative project, aptly named "PriceTracker," is designed to provide you with a seamless and intuitive experience in monitoring product prices based on your preferences. Built on a foundation of Django for the backend and featuring a dynamic frontend developed using HTML, CSS, jQuery, JavaScript, and Bootstrap 5, PriceTracker brings you a user-friendly platform that simplifies your shopping journey.</p>
+
+            <p>With PriceTracker, you can easily register products of interest by entering key product details and setting your desired target price. Behind the scenes, our advanced system takes charge, orchestrating continuous background processes through the efficient coordination of Celery workers. This ensures that your chosen product prices are consistently scraped and meticulously compared against your specified targets.</p>
+
+            <p>The heart of our system lies in its dedication to keeping you informed at all times. As product prices evolve, PriceTracker diligently tracks and evaluates whether your target price has been met. The moment your desired price is achieved, PriceTracker springs into action, promptly sending you real-time notifications. This ensures that you're always in the loop and ready to seize the perfect deal.</p>
+
+            <p>Underpinning this seamless experience is our robust SQLite 3 database, which masterfully manages user data and notifications. Once a notification is sent, the associated data gracefully exits the system, leaving you with an organized and clutter-free interface. Our meticulous approach guarantees uninterrupted tracking and a hassle-free user experience, thanks to our meticulously configured Celery worker setup.</p>
+
+            <p>In summary, PriceTracker harnesses the power of cutting-edge web scraping techniques, seamless background processing, and thoughtful user interface design to offer you a reliable and efficient solution for tracking Amazon product prices. Our amalgamation of innovative technologies, including Django, HTML, CSS, jQuery, JavaScript, and Bootstrap 5, ensures a user experience like no other. With the unwavering precision of Celery workers, PriceTracker is your ultimate companion for navigating the ever-changing landscape of Amazon product prices.</p>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

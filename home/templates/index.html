@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    
+ 
+
+    <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{% static 'home/plugins/fontawesome-free/css/all.min.css' %}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{% static 'homeplugins/icheck-bootstrap/icheck-bootstrap.min.css' %}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{% static 'home/dist/css/adminlte.min.css ' %}">
+  
+  <title>Amazon_price_tracker</title>
+
+</head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/pricetracker">Amazon</a>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        </nav>      
+        <div class="container mt-2 mb-4">
+            <div class="row justify-content-md-center">
+                {% comment %} <div class="col-sm-4 border border-primary shadow rounded pt-2"> {% endcomment %}
+                    <div class="text-center"><font size=6><b> Registration </b></font></div>
+                    <div class="col-sm-12">
+                        <form method="post" id="singnupFrom" action ="douserregistration" onSubmit="return validation();">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label class="font-weight-bold">Email <small class="text-danger"><em>*  This will be used for login !</em></small></label>
+                                <div class="input-group">
+                                    <input type="email" name="emailid" id="emailid" class="form-control" placeholder="Enter valid email" required>
+                                    <div class="input-group-append"><button type="button" class="btn btn-primary" onClick="return emailidCheck();"><i class="fa fa-envelope">Validate</i></button></div>
+                                </div>
+                            </div>
+                            <div id="next-form" class="collapse">
+                                <div class="form-group">
+                                    <label class="font-weight-bold">First Name <small class="text-danger"><em>*</em></small></label>
+                                    <input type="text" name="first_name" id="first_name" class="form-control" placeholder="Choose your first name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Middle Name <small class="text-danger"><em>*</em></small></label>
+                                    <input type="text" name="middle_name" id="middle_name" class="form-control" placeholder="Choose your middle name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Last Name <small class="text-danger"><em>*</em></small></label>
+                                    <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Choose your last name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Date of birth <small class="text-danger"><em>*</em></small></label>
+                                    <input type="date" name="dob" id="dob" class="form-control" value="0000-00-00" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Gender <small class="text-danger"><em>*</em></small></label>
+                                    </br>
+                                    <input type="radio" name="gender" id="fgender" value="1" required> Female
+                                    <input type="radio" name="gender" id="mgender" value="2"> Male
+                                    <input type="radio" name="gender" id="ogender" value="3"> Other
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Alternate Email-id <small class="text-danger"><em></em></small></label>
+                                    <input type="text" name="altemailid" id="altemailid" class="form-control" placeholder="Choose your alternate Email-id">
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold"><small class="text-danger"><em> *</em></small>Contact </label>
+                                    <input type="text" name="contact" id="contact" class="form-control" placeholder="enter valid 10 digit mobile number" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Alternate contact </label>
+                                    <input type="text" name="altcontact" id="altcontact" class="form-control" placeholder="enter valid 10 digit mobile number">
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Permanent Addressline 1 <small class="text-danger"><em> *</em></small></label>
+                                    <textarea name="paddressline1" id="paddressline1" class="form-control" placeholder="Choose your permanent addressline 1" required></textarea>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Permanent Addressline 2 <small class="text-danger"><em> *</em></small></label>
+                                    <textarea name="paddressline2" id="paddressline2" class="form-control" placeholder="Choose your permanent addressline 2" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Permanent Landmark/Road <small class="text-danger"><em> *</em></small></label>
+                                    <textarea name="plandmark" id="plandmark" class="form-control" placeholder="Choose your permanent landmark/road 2" required></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Permanent Pincode<small class="text-danger"><em> *</em></small></label>
+                                    <input type="text" name="ppincode" id="ppincode" class="form-control" placeholder="enter valid 6 digit permanent pincode" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Permanent City <small class="text-danger"><em> *</em></small></label>
+                                    <br>
+                                    <input type="text" name="pcity" id="pcity"  list="citys"/ required>
+                                    <datalist id="citys"  >
+                                    {% for citym in list %}
+                                    <option value="{{citym.cityid}}">{{citym.cityname}}</option>
+                                    {% endfor %}
+                                    </datalist>  
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Corresponding Addressline 1 <small class="text-danger"><em></em></small></label>
+                                    <textarea name="caddressline1" id="caddressline1" class="form-control" placeholder="Choose your corresponding addressline 1"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Corresponding Addressline 2 <small class="text-danger"><em></em></small></label>
+                                    <textarea name="caddressline2" id="caddressline2" class="form-control" placeholder="Choose your corresponding addressline 2"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Corresponding Landmark/Road <small class="text-danger"><em></em></small></label>
+                                    <textarea name="clandmark" id="clandmark" class="form-control" placeholder="Choose your corresponding landmark/road 2"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Corresponding Pincode</label>
+                                    <input type="text" name="cpincode" id="cpincode" class="form-control" placeholder="enter valid 6 digit corresponding pincode">
+                                </div>
+                                 <div class="form-group">
+                                    <label class="font-weight-bold">Corresponding City </label>
+                                    <br>
+                                    <input type="text" name="ccity" id="ccity"  list="citys"/>
+                                    <datalist id="citys"  >
+                                        {% for citym in list %}
+                                        <option value="{{citym.cityid}}">{{citym.cityname}}</option>
+                                        {% endfor %}
+                                    </datalist>  
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Usertype <small class="text-danger"><em> *</em></small></label>
+                                    </br>
+                                    <input type="radio" name="gender" id="gender" value="2" required> Faculty
+                                    <input type="radio" name="gender" id="gender" value="3"> Student
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Password<small class="text-danger"><em> *</em></small></label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="***********" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Confirm Password<small class="text-danger"><em> *</em></small></label>
+                                    <input type="password" name="cpassword" id="cpassword" class="form-control" placeholder="***********" required>
+                                    <em id="cp"></em>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="submit" name="submit" value="Sign Up" class="btn btn-block btn-danger">
+                                </div>
+                            </div> <!--/.next-form-->
+                        </form>
+                    </div>
+                 {% comment %} </div>  {% endcomment %}
+            </div>
+        </div>
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    function emailidCheck() {
+        if($("#emailid").val()=="") {
+            $("#emailid").addClass('is-invalid');
+            return false;
+        } else {
+            var regMail     =   /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+            if(regMail.test($("#emailid").val()) == false) {
+                $("#emailid").addClass('is-invalid');
+                return false;
+            } else {
+                $("#emailid").removeClass('is-invalid');
+                $('#next-form').collapse('show');
+            }
+ 
+        }
+    }
+    function emailidCheck() {
+        if($("#email_id").val()=="") {
+            $("#email_id").addClass('is-invalid');
+            return false;
+        } else {
+            var regMail     =   /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+            if(regMail.test($("#email_id").val()) == false) {
+                $("#email_id").addClass('is-invalid');
+                return false;
+            } else {
+                $("#email_id").removeClass('is-invalid');
+                $('#next-form').collapse('show');
+            }
+ 
+        }
+    }
+    <script>
+    function validation()
+    {    
+
+        if($("#password").val()!=$("#cpassword").val())
+        {
+            $("#cpassword").addClass('is-invalid');
+            $("#cp").html('<span class="text-danger">Password and confirm password not matched!</span>');
+            return false;
+        }
+        
+        var regaltMail     =   /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+        if(regaltMail.test($("#altemailid").val()) == false)
+        {
+            $("#altemailid").addClass('is-invalid');
+            return false;
+            if($("#altemailid").val()=="")
+            {
+                $("#altemailid").removeClass('is-invalid');
+            }
+        } else {
+            $("#altemailid").removeClass('is-invalid');
+            }
+           
+        
+            
+    }
+    $(document).ready(function(e) {
+        $("#username").on("keyup",function(){
+            if($("#username").val()==""){
+                $("#username").addClass('is-invalid');
+                return false;
+            }else{
+                $("#username").removeClass('is-invalid');
+            }
+        });
+        $("#ppincode").on("keyup",function(){
+            if($("#ppincode").val()==""){
+                $("#ppincode").addClass('is-invalid');
+                return false;
+            }else{
+                var regppincode     =   /^[1-9][0-9]{5}$/;
+                if(regppincode.test($("#ppincode").val()) == false){
+                    $("#ppincode").addClass('is-invalid');
+                    return false;
+                }else{
+                    $("#ppincode").removeClass('is-invalid');
+                }
+            }
+        });
+        $("#cpincode").on("keyup",function(){
+            var regcpincode     =   /^[1-9][0-9]{5}$/;
+                if(regcpincode.test($("#cpincode").val()) == false){
+                    $("#cpincode").addClass('is-invalid');
+                    return false;
+                }else{
+                    $("#cpincode").removeClass('is-invalid');
+                }
+            });
+        $("#contact").on("keyup",function(){
+            if($("#contact").val()==""){
+                $("#contact").addClass('is-invalid');
+                return false;
+            }else{
+                var regcontact     =   /^[6789]\d{9}$/;
+                if(regcontact.test($("#contact").val()) == false){
+                    $("#contact").addClass('is-invalid');
+                    return false;
+                }else{
+                    $("#contact").removeClass('is-invalid');
+                }
+            }
+        });
+        $("#altcontact").on("keyup",function(){
+            var regaltcontact     =   /^[6789]\d{9}$/;
+                if(regaltcontact.test($("#altcontact").val()) == false){
+                    $("#altcontact").addClass('is-invalid');
+                    return false;
+                }else{
+                    $("#altcontact").removeClass('is-invalid');
+                }
+            });
+        
+
+        $("#password").on("keyup",function(){
+            if($("#password").val()==""){
+                $("#password").addClass('is-invalid');
+                return false;
+            }else{
+                $("#password").removeClass('is-invalid');
+            }
+        });
+        $("#cpassword").on("keyup",function(){
+            if($("#cpassword").val()==""){
+                $("#cpassword").addClass('is-invalid');
+                return false;
+            }else{
+                $("#cpassword").removeClass('is-invalid');
+            }
+        });
+        
+    });
+</script>
+
+        </body>
+        </html>
+        

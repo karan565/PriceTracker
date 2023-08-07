@@ -1,0 +1,59 @@
+<div class="container-fluid overflow-hidden">
+  <div class="row">
+    <div class="col-md-12 p-0">{% extends 'base.html' %}</div>
+  </div>
+</div>
+{% block title %}Price Tracker{% endblock title %} {% block body %} 
+<div class="container">
+<br>
+  <h1 class="text-center"><u><b>Contact Us</b></u></h1><br>
+  <div class="row mt-4">
+      <div class="col-md-6">
+          <p class="mb-5">
+              We value your feedback and inquiries. If you have any questions, suggestions, or concerns related to PriceTracker, feel free to get in touch with us using the contact details provided below. Our dedicated team is here to assist you and ensure that your experience with PriceTracker is as smooth and efficient as possible.
+          </p>
+      </div>
+      <div class="col-md-6">
+          <!--Section: Contact v.2-->
+          <section class="mb-4">
+              <div class="row">
+                  <div class="col-md-12 text-center">
+                      <form id="contact-form" name="contact-form" action="mail.php" method="POST">
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="md-form mb-4">
+                                      <input type="text" id="name" name="name" class="form-control" placeholder="Your name">
+                                  </div>
+                              </div>
+                              <div class="col-md-6">
+                                  <div class="md-form mb-4">
+                                      <input type="text" id="email" name="email" class="form-control" placeholder="Your email">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="md-form mb-4">
+                                      <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-12">
+                                  <div class="md-form">
+                                      <textarea id="message" name="message" rows="3" class="form-control md-textarea" placeholder="Your message"></textarea>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="text-center text-md-left mt-4">
+                              <button class="btn btn-primary mr-3" type="submit">Send</button>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </section>
+          <!--Section: Contact v.2-->
+      </div>
+  </div>
+</div>
+{% endblock body%}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>{% block title %}{% endblock title %} | Price Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        overflow: hidden;
+        #background: background: linear-gradient(90deg, rgba(255,87,87,1) 20%, rgba(0,196,204,1) 50%, rgba(255,222,89,1) 80%);
+        background-color: #FCF2E5; 
+        font-weight: 600;
+        text-align: center;
+        color: black;
+      }
+      .body-back{
+        #background: background: linear-gradient(90deg, rgba(255,87,87,1) 20%, rgba(0,196,204,1) 50%, rgba(255,222,89,1) 80%); 
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+
+      .navbar-root {
+        background: linear-gradient(90deg, rgba(255,87,87,0.80) 20%, rgba(0,196,204,0.80) 50%, rgba(255,222,89,0.80) 80%);
+        display: flex;
+        #background-color:#234E70; 
+        color:black;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: center;
+        font-size:20px
+      }
+
+      .navbar-brand,
+      .nav-link {
+        color: white;
+        font-weight: bold;
+      }
+      .navbar-logo{
+        height: 150;
+        width: 150;
+      }
+
+      .navbar-nav {
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+      }
+
+      .background-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .nav-item {
+        margin: 0 10px;
+      }
+
+      .hoverable {
+        display: inline-block;
+        backface-visibility: hidden;
+        vertical-align: middle;
+        position: relative;
+        box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+        transform: translateZ(0);
+        transition-duration: 0.3s;
+        transition-property: transform;
+      }
+
+      .hoverable:before {
+        position: absolute;
+        pointer-events: none;
+        z-index: -1;
+        content: "";
+        top: 100%;
+        left: 5%;
+        height: 10px;
+        width: 90%;
+        opacity: 0;
+        transition-duration: 0.3s;
+        transition-property: transform, opacity;
+      }
+
+      .hoverable:hover,
+      .hoverable:active,
+      .hoverable:focus {
+        transform: translateY(-5px);
+      }
+
+      .hoverable:hover:before,
+      .hoverable:active:before,
+      .hoverable:focus:before {
+        opacity: 1;
+        transform: translateY(-5px);
+      }
+
+      @keyframes bounce-animation {
+        16.65% {
+          transform: translateY(8px);
+        }
+        33.3% {
+          transform: translateY(-6px);
+        }
+        49.95% {
+          transform: translateY(4px);
+        }
+        66.6% {
+          transform: translateY(-2px);
+        }
+        83.25% {
+          transform: translateY(1px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      .bounce {
+        animation-name: bounce-animation;
+        animation-duration: 3s;
+      }
+
+      .transparent-button {
+        display: inline-block;
+        width: 150px;
+        height: 50px;
+        padding: 10px 20px;
+        background-color: grey;
+        color: white;
+        border: 2px solid #007bff;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 2;
+      }
+
+      .transparent-button:hover {
+        background-color: rgba(0, 123, 255, 0.2);
+      }
+
+      .footer-main {
+        position: relative;
+        margin-top: auto; /* Push the footer to the bottom of the container */
+      }
+      
+      
+      
+      
+      
+    </style>
+  </head>
+  <body background-image: url('img1.jpg');>
+    <div class="container-fluid navbar-root">
+      <nav class="navbar navbar-expand-lg ">
+        <a class="navbar-brand navbar" href="/pricetracker">Price Tracker</a>
+        {% comment %} <img class="navbar-logo" src="https://extensions.boostmyshop.com/media/catalog/product/cache/17/thumbnail/9df78eab33525d08d6e5fb8d27136e95/l/o/logo-price-tracker.png"/> {% endcomment %}
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse ml-auto"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a id="len1" class="nav-link hoverable" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a id="len2" class="nav-link hoverable" href="/about">About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                id="len3"
+                class="nav-link dropdown-toggle hoverable"
+                href="#"
+                role="button"
+                data-toggle="dropdown"
+                >Services</a
+              >
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/amazon">Amazon</a>
+                <a class="dropdown-item" href="/flipkart">Flipkart</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a id="len4" class="nav-link hoverable" href="/contact"
+                >Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+    
+    <script>
+      function callDjangoFunction() {
+        // Make an AJAX request to the Django server
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/pricetracker", true);
+        xhr.send();
+      }
+    </script>
+    {% if messages %} {% for message in messages %}
+    <div
+      class="alert alert-{{ message.tags }} alert-dismissible fade show my-0"
+      role="alert"
+    >
+      <strong>{{ message }}</strong>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endfor %} {% endif %} {% block body %}{% endblock body %}
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(function () {
+        var str = "#len"; // increment by 1 up to 1-nelemnts
+        $(document).ready(function () {
+          var i = 1,
+            stop = 4; // num elements
+          setInterval(function () {
+            if (i > stop) return;
+            $("#len" + i++).toggleClass("bounce");
+          }, 500);
+        });
+      });
+    </script>
+    {% comment %} <footer class="bg-light text-center text-lg-start footer-main" >
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-dark" href="#">Pricetracker</a>
+        <br>Made with love by Karan Vaghela and Darsh Doshi 
+      </div> 
+      <!-- Copyright -->
+    </footer> {% endcomment %}
+  </body>
+</html>

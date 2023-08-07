@@ -1,0 +1,25 @@
+<div class="container-fluid overflow-hidden" style="background-image: url('')">
+  <div class="row">
+    <div class="col-md-12 p-0">{% extends 'base.html' %}</div>
+    {% block title %}Price Tracker{% endblock title %} {% block body %}
+  </div>
+  {% comment %}
+  <div class="transparent-button">Click Me</div>
+  {% endcomment %}
+  {% load static %}
+  <img
+  src="{% static 'img1.jpg' %}"
+  class="background-image"
+  alt="..."
+  usemap="#workmap"
+  />
+</div>
+<script>
+  function callDjangoFunction() {
+    // Make an AJAX request to the Django server
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "/pricetracker", true);
+    xhr.send();
+  }
+</script>
+{% endblock body %}

@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Amazon Price Tracker{% endblock title %}
+
+{% block body %}
+
+<div class="container mb-3 py-4">
+    <h1 class="text-center"><b><u>ENTER YOUR DATA</u></b></h1><br>
+    <form method="post" action="/register" onSubmit="return validation();">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Name :</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email address :</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Phone Number :</label>
+            <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required>
+        </div> 
+        
+        <div class="form-group">
+            <label for="targetprice">Target price :</label>
+            <input type="integer" class="form-control" id="targetprice" name="targetprice" placeholder="Enter Your targetted price" required>
+        </div> 
+        
+        <div class="form-group">
+            <label for="link">Product link :</label>
+            <textarea class="form-control" id="link" rows="3" name="link" placeholder="Enter your product link here" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        <button class="btn btn-secondary" onclick="history.back()">Back</button>
+    </form>
+
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    $("#email").on("keyup", function () {
+      if ($("#email").val() == "") {
+        $("#email").addClass("is-invalid");
+        return false;
+      } else {
+        var regemail =
+          /^([_a-zA-Z0-9-]+)(\.[_a-zA-Z0-9-]+)*@([a-zA-Z0-9-]+\.)+([a-zA-Z]{2,3})$/;
+        if (regemail.test($("#email").val()) == false) {
+          $("#email").addClass("is-invalid");
+          return false;
+        } else {
+          $("#email").removeClass("is-invalid");
+        }
+      }
+    });
+  
+    $("#phone").on("keyup", function () {
+      if ($("#phone").val() == "") {
+        $("#phone").addClass("is-invalid");
+        return false;
+      } else {
+        var regphone = /^[6789]\d{9}$/;
+        if (regphone.test($("#phone").val()) == false) {
+          $("#phone").addClass("is-invalid");
+          return false;
+        } else {
+          $("#phone").removeClass("is-invalid");
+        }
+      }
+    });
+  
+    $("#targetprice").on("keyup", function () {
+      if ($("#targetprice").val() == "") {
+        $("#targetprice").addClass("is-invalid");
+        return false;
+      } else {
+        var regtargetprice = /[+-]?([0-9]*[.])?[0-9]+/;
+        if (regtargetprice.test($("#targetprice").val()) == false) {
+          $("#targetprice").addClass("is-invalid");
+          return false;
+        } else {
+          $("#targetprice").removeClass("is-invalid");
+        }
+      }
+    });
+  
+    $("#link").on("keyup", function () {
+      if ($("#link").val() == "") {
+        $("#link").addClass("is-invalid");
+        return false;
+      } else {
+        var reglink =
+          /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
+        if (reglink.test($("#link").val()) == false) {
+          $("#link").addClass("is-invalid");
+          return false;
+        } else {
+          $("#link").removeClass("is-invalid");
+        }
+      }
+    });
+  </script>
+
+{% endblock body %}
